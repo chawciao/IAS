@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Door Control System</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <!-- Cloud Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Register</h1>
+    <div id="register-form" class="centered-form">
+      <form onsubmit="return false;">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <div class="password-container">
+          <input type="password" id="password" placeholder="Password" 
+                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                 title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character"
+                 required>
+          <button type="button" class="show-password" tabindex="-1">
+            <i class="fas fa-eye" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="password-container">
+          <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+          <button type="button" class="show-password" tabindex="-1">
+            <i class="fas fa-eye" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="password-requirements">
+          <p>Password must contain:</p>
+          <ul>
+            <li id="length"><i class="fas fa-times"></i> At least 8 characters</li>
+            <li id="uppercase"><i class="fas fa-times"></i> One uppercase letter</li>
+            <li id="lowercase"><i class="fas fa-times"></i> One lowercase letter</li>
+            <li id="number"><i class="fas fa-times"></i> One number</li>
+            <li id="special"><i class="fas fa-times"></i> One special character (@$!%*?&)</li>
+          </ul>
+        </div>
+        <button type="button" onclick="register()" class="primary-btn">Register</button>
+        <p class="form-footer">
+          Already have an account? <a href="home.html">Login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</body>
+</html> 

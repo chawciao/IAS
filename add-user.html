@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User - Door Control System</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <!-- Cloud Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="app.js"></script>
+</head>
+<body onload="initAddUserPage()">
+  <div class="container">
+    <h1>Add New User</h1>
+    <div id="add-user-panel" class="admin-panel">
+      <h2>Welcome, <span id="admin-email"></span></h2>
+      
+      <div class="centered-form">
+        <form onsubmit="return false;">
+          <input type="text" id="new-name" placeholder="Full Name" required>
+          <input type="email" id="new-email" placeholder="Email" required>
+          <div class="password-container">
+            <input type="password" id="new-password" placeholder="Password" 
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                   title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character"
+                   required>
+            <button type="button" class="show-password" onclick="togglePassword('new-password')">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <select id="role" required>
+            <option value="employee">Employee</option>
+            <option value="admin">Admin</option>
+          </select>
+          
+          <div class="password-requirements">
+            <p>Password must contain:</p>
+            <ul>
+              <li id="length"><i class="fas fa-times"></i> At least 8 characters</li>
+              <li id="uppercase"><i class="fas fa-times"></i> One uppercase letter</li>
+              <li id="lowercase"><i class="fas fa-times"></i> One lowercase letter</li>
+              <li id="number"><i class="fas fa-times"></i> One number</li>
+              <li id="special"><i class="fas fa-times"></i> One special character (@$!%*?&)</li>
+            </ul>
+          </div>
+          
+          <button type="button" onclick="addUser()" class="primary-btn">Add User</button>
+        </form>
+      </div>
+
+      <div class="admin-actions">
+        <button onclick="window.location.href='admin.html'" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to Admin Panel
+        </button>
+        <button onclick="logout()" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

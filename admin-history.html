@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin History - Door Control System</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <!-- Cloud Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="app.js"></script>
+</head>
+<body onload="initAdminHistory()">
+  <div class="container">
+    <h1>Admin History Panel</h1>
+    <div id="admin-history-panel" class="admin-panel">
+      <h2>Welcome, <span id="admin-email"></span></h2>
+      
+      <div class="history-tabs">
+        <button class="tab-btn active" onclick="showTab('login')">Login History</button>
+        <button class="tab-btn" onclick="showTab('door')">Door Activity</button>
+      </div>
+
+      <div id="login-history" class="history-section">
+        <h3>Recent Login Activity</h3>
+        <div id="login-history-list" class="history-list"></div>
+      </div>
+
+      <div id="door-history" class="history-section" style="display: none;">
+        <h3>Recent Door Activity</h3>
+        <div id="door-history-list" class="history-list"></div>
+      </div>
+
+      <div class="admin-actions">
+        <button onclick="window.location.href='admin.html'" class="back-btn">Back to Admin Panel</button>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Door Control System</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <!-- Cloud Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="app.js"></script>
+</head>
+<body onload="initAdminPanel()">
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <div id="admin-panel" class="admin-panel">
+      <h2>Welcome, <span id="admin-email"></span></h2>
+      
+      <div class="admin-controls">
+        <button onclick="window.location.href='admin-history.html'" class="history-btn">
+          <i class="fas fa-history"></i> View History
+        </button>
+        <button onclick="window.location.href='add-user.html'" class="add-user-btn">
+          <i class="fas fa-user-plus"></i> Add User
+        </button>
+      </div>
+
+      <div class="door-controls">
+        <button id="open-door" onclick="controlDoor('open')">
+          <i class="fas fa-door-open"></i> Open Door
+        </button>
+        <button id="close-door" onclick="controlDoor('close')">
+          <i class="fas fa-door-closed"></i> Close Door
+        </button>
+      </div>
+
+      <div id="door-status">
+        <p>Current Status: <span id="status-text">Unknown</span></p>
+      </div>
+
+      <div class="admin-actions">
+        <button onclick="logout()" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
